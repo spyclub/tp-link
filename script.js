@@ -4,7 +4,7 @@ myDash.$inject = ['$scope', '$mdToast','$http','$interval','$cookies'];
 
 angular.module('myApp').controller('dash', myDash)
     .config(['$mdThemingProvider',function($mdThemingProvider) {
-        $mdThemingProvider.theme('custom').primaryPalette('grey').accentPalette('deep-orange').dark();
+        $mdThemingProvider.theme('custom').accentPalette('deep-orange').dark();
     }]);
 
 function myDash($scope, $mdToast, $http, $interval, $cookies) {
