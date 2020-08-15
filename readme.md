@@ -1,39 +1,13 @@
-## TP-Link HS100 Web Client
+# TP-Link Web Client
+Web client for the tp-link series of smart switches (i.e. HS-100 & HS-110). Repository forked from [Andy Allsopp](https://github.com/arallsopp/tp-link-smart-switch-web-client-).
 
-### Why?
+## About this application
+Web client uses angular services to build a web control surface for the TP-Link series of smart plugs. TP-Link's own official app (Kasa) only runs on iOS and Android devices, so those of you with other tablets, mobiles, or desktops get left in the cold. This web client addresses that.
 
-TP-Link give you access to your HS-100 range devices through the KASA app on IOS / Android. That's fine, but what if you're
-in front of your desktop / tablet / etc, and don't have your phone to hand? How annoying to have to fish it out of your pocket
-just to flick a switch. 
+In use, the Kasa app generates a unique ID, then combines this with the registration information you supply at sign-up to retrieve a secure token from a TP-Link hosted API service. Requests for smart plug availability, status and relay states are sent with this token to protect your privacy.
 
-This angular material web-page provides the service TP-Link omitted. You can log into the TP-Link API to generate a service token,
-have it look up the devices stored against your account, monitor and set their power state. 
+This application is able to generate a random UUID of its own, capture your credentials, and pass these to the TP-Link hosted API service to obtain a genuine token. That token can then be used to list the devices which are present, indicate their status, and allow you to switch them on/off from anywhere you like.
 
-If you've just added TP-Link devices to a smart home network and want to be able to control them all from one place, you can 
-examine the source of this project and utilise the calls within your own pages. Or just use this one :)
+Information is only sent to and from the TP-Link APIs, and is not exposed to any other server. If you opt to retain your login credentials and/or authentication token, these are stored in cookies within your browser. They are not released to me or anyone else.
 
-
-### Features:
-
- - generates a UUID
- - capture credentials.
- - authenticates against the tp-link api service to get a secure authentication token
- - uses that token to:
-  - list the devices stored against your account
-  - send on/off commands to them.
-  - reflect whether the devices are currently on or not.
- - optionally stores the token (and/or credentials) so that you can jump straight to it next time.
- 
- 
-### Notes:
-
-If you opt to store your token or credentials, these are held in a browser cookie on *your* machine. In use, they are sent directly from your
-browser to the TP-Link API endpoint via https, and are not sent to any other web host.
-
-### To do:
-
-Look for further features.
-
-### Implementation:
-
-See codepen at: https://codepen.io/arallsopp/pen/pdZQWG
+To access your plugs, make sure they have remote control enabled, and are registered with the official Kasa App from TP-Link (Get Kasa here). Unfortunately, I don't know a way to perform the registration without (at least) temporary access to the official app, but once registered you can send requests from any modern browser.
